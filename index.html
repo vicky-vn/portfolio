@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignesh Natarajan Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-text {
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .profile-text p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 1rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #667eea;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        section:nth-child(even) {
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #333;
+            font-weight: 300;
+        }
+
+        /* About */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #f1f3f4;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(102,126,234,0.15);
+        }
+        
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .education-degree {
+            color: #333;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-duration {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-details {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .education-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .education-details li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .education-details li::before {
+            content: '▶';
+            color: #667eea;
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        /* Mobile Education */
+        @media (max-width: 768px) {
+            .education-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .education-card {
+                padding: 1.5rem;
+            }
+            
+            .education-degree {
+                font-size: 1.2rem;
+            }
+        }
+
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            top: 0;
+        }
+
+        .experience-item {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            width: calc(50% - 40px);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            top: 2rem;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .experience-item:nth-child(odd) {
+            margin-left: 0;
+        }
+
+        .experience-item:nth-child(odd)::before {
+            right: -50px;
+        }
+
+        .experience-item:nth-child(even) {
+            margin-left: auto;
+        }
+
+        .experience-item:nth-child(even)::before {
+            left: -50px;
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            color: #333;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-duration {
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .experience-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .experience-achievements {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .experience-achievements li {
+            color: #555;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .experience-achievements li::before {
+            content: '▶';
+            color: #667eea;
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        .experience-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .experience-tech {
+            background: #f1f3f4;
+            color: #555;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        .cert-hackathon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-item, .hackathon-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+
+        .cert-item h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Resume */
+        .resume-section {
+            text-align: center;
+        }
+
+        .resume-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: transform 0.3s;
+            margin: 1rem;
+        }
+
+        .resume-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #764ba2;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Navigation Toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 1rem;
+            color: #333;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Header adjustments */
+            .profile-section {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto;
+            }
+
+            .profile-text h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .profile-text p {
+                font-size: 1rem;
+            }
+
+            .profile-text {
+                min-width: auto;
+            }
+
+            header {
+                padding: 1.5rem 0;
+            }
+
+            /* Mobile Navigation */
+            .nav-toggle {
+                display: block;
+                margin: 0 auto;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background: white;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0;
+                width: 100%;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            nav ul li a {
+                padding: 1.2rem 1rem;
+                display: block;
+                width: 100%;
+            }
+
+            /* Section adjustments */
+            section {
+                padding: 2.5rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Container padding */
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Skills grid */
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .skill-category {
+                padding: 1.5rem;
+            }
+
+            /* Projects grid */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .project-content h3 {
+                font-size: 1.2rem;
+            }
+
+            /* Certifications */
+            .cert-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .cert-item {
+                padding: 1.2rem;
+            }
+
+            /* Experience timeline mobile */
+            .experience-timeline::before {
+                left: 30px;
+            }
+
+            .experience-item {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .experience-item::before {
+                left: -50px !important;
+            }
+
+            .experience-item:nth-child(even) {
+                margin-left: 60px !important;
+            }
+
+            .experience-title {
+                font-size: 1.2rem;
+            }
+
+            .experience-company {
+                font-size: 1rem;
+            }
+            .contact-links {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .contact-link {
+                font-size: 1.1rem;
+                padding: 0.5rem;
+            }
+
+            /* Resume buttons */
+            .resume-button {
+                display: block;
+                margin: 0.5rem auto;
+                width: fit-content;
+                text-align: center;
+            }
+
+            /* About section */
+            .about-content p {
+                font-size: 1rem;
+                margin-bottom: 1.2rem;
+            }
+
+            /* Skill tags responsive */
+            .skill-tags {
+                gap: 0.3rem;
+            }
+
+            .skill-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            /* Tech tags responsive */
+            .project-tech {
+                gap: 0.3rem;
+            }
+
+            .tech-tag {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.6rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .skill-category, .project-content, .cert-item, .hackathon-item {
+                padding: 1rem;
+            }
+
+            .resume-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.5rem;
+                display: inline-block;
+            }
+
+            /* Stack resume buttons vertically on very small screens */
+            .resume-section {
+                text-align: center;
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media (max-width: 768px) and (orientation: landscape) {
+            header {
+                padding: 1rem 0;
+            }
+
+            .profile-text h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            section {
+                padding: 2rem 0;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="profile-section">
+                <img src="assets/IMG_5774.JPG" 
+                     alt="Profile Photo" 
+                     class="profile-photo" 
+                     id="profilePhoto">
+                <div class="profile-text">
+                    <h1>Vignesh Natarajan</h1>
+                    <p>Software Engineer (Data)</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" onclick="closeNav()">About</a></li>
+                <li><a href="#skills" onclick="closeNav()">Skills</a></li>
+                <li><a href="#education" onclick="closeNav()">Education</a></li>
+                <li><a href="#experience" onclick="closeNav()">Experience</a></li>
+                <li><a href="#projects" onclick="closeNav()">Projects</a></li>
+                <li><a href="#certifications" onclick="closeNav()">Certifications</a></li>
+                <li><a href="#resume" onclick="closeNav()">Resume</a></li>
+                <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content fade-in">
+                <p>Hi👋, I'm Vicky. I'm 4x Azure Certified and 1x AWS Certified. A passionate data engineer who loves turning complex data into actionable insights and building solutions that genuinely make a difference for teams and businesses.</p>
+                <p>With over three years of experience working in Fortune 500 environments, I'm skilled at designing and scaling ETL pipelines, modernizing analytics workflows, and delivering results.</p>
+                <p>I'm always excited to tackle challenging problems, whether that means orchestrating cloud migrations, optimizing legacy systems, or simply making data work smarter for everyone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3>Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C#</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Libraries & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Numpy</span>
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">FastAPI</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Cloud Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MS SQL Server</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3>Others</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">dbt</span>
+                        <span class="skill-tag">Airflow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            <div class="education-grid">
+                <div class="education-card fade-in">
+                    <h3 class="education-degree">Master of Applied Computing</h3>
+                    <div class="education-school">University of Windsor</div>
+                    <div class="education-duration">2024 - 2025</div>
+                    <!-- <div class="education-details">
+                        <ul>
+                            <li>Specialized in Machine Learning and Big Data Analytics</li>
+                            <li>Thesis: "Scalable Real-time Data Processing Systems"</li>
+                            <li>GPA: 3.8/4.0</li>
+                            <li>Relevant Coursework: Advanced Statistics, Data Mining, Cloud Computing</li>
+                        </ul>
+                    </div> -->
+                </div>
+                
+                <div class="education-card fade-in">
+                    <h3 class="education-degree">Bachelor of Technology in Computer Science & Engineering</h3>
+                    <div class="education-school">SRM Institute of Science & Technology</div>
+                    <div class="education-duration">2016 - 2020</div>
+                    <!-- <div class="education-details">
+                        <ul>
+                            <li>Magna Cum Laude graduate</li>
+                            <li>President of Computer Science Club</li>
+                            <li>GPA: 3.7/4.0</li>
+                            <li>Relevant Coursework: Database Systems, Algorithms, Software Engineering</li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Data Engineer Intern</h3>
+                        <div class="experience-company">University of Windsor</div>
+                        <div class="experience-duration">May 2025 - Aug 2025</div>
+                    </div>
+                    <p class="experience-description">
+                        Collaborated with Greatlakes Greenhouses Inc - a leading greenhouse company in Ontario, to develop a comprehensive data pipeline and dashboard system. 
+                    </p>
+                    <ul class="experience-achievements">
+                        <li>Extracted data from external public APIs using Python and automated the ETL process with Pandas for downstream analysis</li>
+                        <li>Transformed raw data into clean, structured DataFrames and loaded them into internal systems for dashboard consumption</li>
+                        <li>Built interactive dashboards in Streamlit to visualize operational metrics and trends</li>
+                        <li>Improved data pipeline performance and usability by optimizing transformation logic and modularizing code for maintainability</li>
+                    </ul>
+                    <!-- <div class="experience-technologies">
+                        <span class="experience-tech">Apache Spark</span>
+                        <span class="experience-tech">AWS</span>
+                        <span class="experience-tech">Python</span>
+                        <span class="experience-tech">Kafka</span>
+                        <span class="experience-tech">Airflow</span>
+                    </div> -->
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Software Engineer (Data)</h3>
+                        <div class="experience-company">Cognizant</div>
+                        <div class="experience-duration">Jul 2020 - Apr 2023</div>
+                    </div>
+                    <p class="experience-description">
+                        Developed and maintained ETL pipelines for multiple and diverse international clients across healthcare and digital learning sectors.
+                    </p>
+                    <ul class="experience-achievements">
+                        <li>Designed and optimized complex SQL stored procedures to streamline data access, serving 200K+ users</li>
+                        <li>Developed robust REST APIs for a learning platform and created reusable helper functions by following best practices</li>
+                        <li>Developed and optimized stored procedures to improve response time up to 2ms through query optimization and indexing</li>
+                        <li>Developed Python scripts to parse and split large XML data dumps (100MB+), enabling efficient ingestion</li>
+                    </ul>
+                    <!-- <div class="experience-technologies">
+                        <span class="experience-tech">PostgreSQL</span>
+                        <span class="experience-tech">Docker</span>
+                        <span class="experience-tech">Azure</span>
+                        <span class="experience-tech">Databricks</span>
+                        <span class="experience-tech">Scala</span>
+                    </div> -->
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Intern</h3>
+                        <div class="experience-company">Cognizant</div>
+                        <div class="experience-duration">February 2020 - Jun 2020</div>
+                    </div>
+                    <p class="experience-description">
+                        Started my corporate journey by building foundational data infrastructure for an internal application.
+                    </p>
+                    <ul class="experience-achievements">
+                        <li>Developed and deployed a SaaS training solution to streamline new hire onboarding, improving process efficiency by 10%</li>
+                        <li>Created backend scripts to analyze large datasets, enabling actionable business insights</li>
+                        <li>Implemented dynamic data binding in Angular to enhance user interface responsiveness and maintainability</li>
+                        <li>Assisted in debugging and fixing UI issues to improve user experience and interface stability</li>
+                    </ul>
+                    <!-- <div class="experience-technologies">
+                        <span class="experience-tech">Python</span>
+                        <span class="experience-tech">MySQL</span>
+                        <span class="experience-tech">GCP</span>
+                        <span class="experience-tech">BigQuery</span>
+                        <span class="experience-tech">Pandas</span>
+                    </div> -->
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-content">
+                        <h3><a href="">filterIt</a></h3>
+                        <p>An end-to-end privacy firewall for generative AI, built to prevent accidental data leaks and protect sensitive information when using LLMs</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-content">
+                        <h3><a href="">CryptoXtract</a></h3>
+                        <p>A powerful data extraction and analytics platform designed for cryptocurrency markets and blockchain datasets</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">dbt</span>
+                            <span class="tech-tag">Airflow</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="note">
+                    <p>Checkout my github profile for more projects!!</p>
+                </div>
+                <!-- <div class="project-card fade-in">
+                    <div class="project-content">
+                        <h3><a href=""></a>X-CreditLine</h3>
+                        <p>Created a reusable ETL framework that automated data ingestion processes, reducing manual effort by 70% and ensuring consistent data quality across all pipelines.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Apache Airflow</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="project-card fade-in">
+                    <div class="project-content">
+                        <h3>ML Model Deployment Platform</h3>
+                        <p>Developed an end-to-end ML pipeline platform enabling data scientists to deploy models with automated monitoring, A/B testing, and rollback capabilities.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MLflow</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Azure</span>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title fade-in">Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-item fade-in">
+                    <h4><a href="https://www.credly.com/badges/ec5113dd-c63f-4240-b2e9-87be97fcf259/public_url">AWS Certified Data Engineer - Associate </a></h4>
+                   
+                    <p>Amazon Web Services • 2025</p>
+                </div>
+                <div class="cert-item fade-in">
+                    <h4><a href="https://www.credly.com/badges/b96a886b-77e9-494e-a216-720215cb18ba/public_url">Microsoft Certified Azure Data Fundamentals</a></h4>
+                    <p>Microsoft Azure• 2023</p>
+                </div>
+                <div class="cert-item fade-in">
+                    <h4><a href='https://www.credly.com/badges/77da1e90-07a5-4bec-b983-f3839839bd5e/public_url'>Microsoft Certified Azure AI Fundamentals</a></h4>
+                    <p>Microsoft Azure • 2023</p>
+                </div>
+                <div class="cert-item fade-in">
+                    <h4><a href="https://www.credly.com/badges/ae1bb6f3-da67-4ac1-a8f9-c322292d3fc7/public_url">Microsoft Certified Power Platform Fundamentals</a></h4>
+                    <p>Microsoft Azure • 2023</p>
+                </div>
+                <div class="cert-item fade-in">
+                    <h4><a href="https://www.credly.com/badges/f2c921ea-a486-4f74-bec6-4f8e6d08ed0c/public_url">Microsoft Certified Azure Fundamentals</a></h4>
+                    <p>Microsoft Azure • 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <h2 class="section-title fade-in">Resume</h2>
+            <div class="resume-section fade-in">
+                <p style="margin-bottom: 2rem; color: #666;">View my detailed resume to learn more about my experience and qualifications.</p>
+                <a href="https://vicky-vn.github.io/portfolio/assets/vicky_data_engineer_resume.pdf" class="resume-button" target="_blank" rel="noopener">📋 View Online Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact</h2>
+            <div class="contact-content fade-in">
+                <p style="margin-bottom: 2rem; color: #666;">Let's connect and discuss how we can work together on exciting projects.</p>
+                <div class="contact-links">
+                    <a href="mailto:vikky33.nv@gmail.com" class="contact-link">
+                        Gmail
+                    </a>
+                    <a href="https://linkedin.com/in/vicky-vn" class="contact-link">
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/vicky-vn" class="contact-link">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Vignesh Natarajan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        function toggleNav() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function closeNav() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const navToggle = document.querySelector('.nav-toggle');
+            
+            if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add active state to navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add typing effect to header
+        const headerTexts = [
+            "Software Engineer",
+            "Data Engineer",
+            "Backend Developer",
+        ];
+        let headerTextIndex = 0;
+        const headerElement = document.querySelector('.profile-text p');
+        let i = 0;
+
+        function typeWriter() {
+            const headerText = headerTexts[headerTextIndex];
+            if (i < headerText.length) {
+                headerElement.innerHTML = headerText.substring(0, i + 1) + '<span style="border-right: 2px solid white; animation: blink 1s infinite;">|</span>';
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                setTimeout(() => {
+                    headerElement.innerHTML = headerText;
+                    setTimeout(() => {
+                        i = 0;
+                        headerTextIndex = (headerTextIndex + 1) % headerTexts.length;
+                        typeWriter();
+                    }, 1000);
+                }, 1000);
+            }
+        }
+
+        // Add profile photo functionality
+        document.getElementById('profilePhoto').addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            
+            input.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profilePhoto').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            
+            input.click();
+        });
+
+        // Start typing effect after page loads
+        setTimeout(typeWriter, 1000);
+
+        // Add CSS for blinking cursor
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+            nav ul li a.active {
+                color: #667eea;
+                border-bottom: 2px solid #667eea;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 10px 30px rgba(102, 126, 234, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Add click functionality to resume buttons
+        // document.querySelectorAll('.resume-button').forEach(button => {
+        //    button.addEventListener('click', function(e) {
+        //        e.preventDefault();
+        //        alert('Please update the href attribute with your actual resume link!');
+        //    });
+       // });
+    </script>
+</body>
+</html>
